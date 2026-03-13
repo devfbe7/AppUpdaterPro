@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<!--  ReSharper disable all  -->
+<Window
+    Background="#1E1E1E"
+    Foreground="White"
+    Height="650"
+    Icon="Icons/AppIcon.ico"
+    Title="PC App Updater Pro"
+    Width="1000"
+    WindowStartupLocation="CenterScreen"
+    x:Class="App_Updater_Pro.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+    <Grid Margin="10">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <DockPanel LastChildFill="False" Margin="0,0,0,10">
+            <TextBlock
+                DockPanel.Dock="Left"
+                FontSize="26"
+                FontWeight="Bold"
+                Text="💻 PC App Updater Pro" />
+            <Button
+                Background="#444"
+                Click="Export_Click"
+                Content="📁 Exportieren"
+                DockPanel.Dock="Right"
+                Foreground="White"
+                Margin="10,0,0,0"
+                Padding="10,5" />
+        </DockPanel>
+
+        <StackPanel
+            Grid.Row="1"
+            Margin="0,0,0,10"
+            Orientation="Horizontal"
+            VerticalAlignment="Center">
+            <Label
+                Background="#1E1E1E"
+                Content="Filter:"
+                Foreground="White"
+                Margin="0,0,5,0"
+                VerticalAlignment="Center" />
+            <TextBox
+                Margin="0,0,10,0"
+                ToolTip="Programmnamen filtern (z. B. Chrome)"
+                Width="200"
+                x:Name="FilterBox" />
+            <Button
+                Click="ShowInstalled_Click"
+                Content="📋 Installierte"
+                Margin="5"
+                Padding="10,5" />
+            <Button
+                Click="ShowUpdates_Click"
+                Content="⬆ Updates"
+                Margin="5"
+                Padding="10,5" />
+            <Button
+                Background="#007ACC"
+                Click="UpdateAll_Click"
+                Content="⟳ Alle updaten"
+                Margin="5"
+                Padding="10,5" />
+            <Button
+                Background="#2E8B57"
+                Click="UpdateFiltered_Click"
+                Content="🔍 Gefiltert"
+                Margin="5"
+                Padding="10,5" />
+            <Button
+                Background="#444"
+                Click="ShowCommands_Click"
+                Content="❔ Befehle"
+                Margin="5"
+                Padding="10,5" />
+        </StackPanel>
+
+        <Border
+            BorderBrush="#333"
+            BorderThickness="1"
+            CornerRadius="6"
+            Grid.Row="2">
+            <ScrollViewer HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto">
+                <TextBox
+                    Background="#2D2D30"
+                    FontFamily="Consolas"
+                    FontSize="13"
+                    Foreground="White"
+                    HorizontalScrollBarVisibility="Auto"
+                    IsReadOnly="True"
+                    TextWrapping="Wrap"
+                    VerticalScrollBarVisibility="Auto"
+                    x:Name="OutputBox" />
+            </ScrollViewer>
+        </Border>
+
+        <StackPanel
+            Grid.Row="3"
+            Margin="0,10,0,0"
+            Orientation="Horizontal"
+            VerticalAlignment="Center">
+            <ProgressBar
+                Height="20"
+                Margin="0,0,10,0"
+                Maximum="100"
+                Minimum="0"
+                Width="400"
+                x:Name="Progress" />
+            <TextBlock
+                Text="Bereit"
+                VerticalAlignment="Center"
+                x:Name="StatusText" />
+            <CheckBox
+                Background="#2D2D30"
+                Checked="AutoRefreshBox_Checked"
+                Content="Auto-Refresh (60 Sek.)"
+                Foreground="White"
+                Margin="20,0,0,0"
+                Unchecked="AutoRefreshBox_Unchecked"
+                x:Name="AutoRefreshBox" />
+        </StackPanel>
+    </Grid>
+</Window>
